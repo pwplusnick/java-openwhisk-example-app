@@ -4,7 +4,7 @@
   <groupId>com.ibm.java-openwhisk-pipeline-example</groupId>
   <artifactId>java-openwhisk-example-app</artifactId>
   <version>latest</version>
-  <name>java-openwhisk-example-app</name>
+  <name>Hello</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
   <properties>
@@ -26,74 +26,73 @@
     </dependency>
   </dependencies>
   <build>
-    <pluginManagement>
+    <finalName>Hello-NoDeps</finalName>
       <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-      <plugins>
+    <plugins>
         <!-- build the JAR using latest -->
         <!-- NOTE: if we use default JAR plugin we instead get version 2.4 'maven-jar-plugin:2.4:jar' -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>3.0.2</version>
-          <configuration>
-            <archive>
-              <manifest>
-                <mainClass>com.ibm.java-openwhisk-pipeline-example.Hello</mainClass>
-              </manifest>
-            </archive>
-          </configuration>
-        </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.2</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>com.ibm.java-openwhisk-pipeline-example.Hello</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
         <!-- force dependencies to be packaged in JAR file -->
-        <plugin>
-          <artifactId>maven-assembly-plugin</artifactId>
-          <executions>
-            <execution>
-              <phase>package</phase>
-              <goals>
-                <goal>single</goal>
-              </goals>
-            </execution>
-          </executions>
-          <configuration>
-            <finalName>Hello</finalName>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <finalName>Hello</finalName>
             <!-- https://maven.apache.org/plugins/maven-assembly-plugin/faq.html#required-classifiers -->
-            <appendAssemblyId>false</appendAssemblyId>
-            <descriptorRefs>
-              <descriptorRef>jar-with-dependencies</descriptorRef>
-            </descriptorRefs>
-            <archive>
-              <manifest>
-                <mainClass>com.ibm.java-openwhisk-pipeline-example.Hello</mainClass>
-              </manifest>
-            </archive>
-          </configuration>
-        </plugin>
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifest>
+              <mainClass>com.ibm.java-openwhisk-pipeline-example.Hello</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
         <!-- skip the 'testResource' phase -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>3.0.2</version>
-          <executions>
-            <execution>
-              <id>default-testResources</id>
-              <phase>none</phase>
-            </execution>
-          </executions>
-        </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.0.2</version>
+        <executions>
+          <execution>
+            <id>default-testResources</id>
+            <phase>none</phase>
+          </execution>
+        </executions>
+      </plugin>
         <!-- skip the (JUnit) 'test' phase -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.0.2</version>
-          <executions>
-            <execution>
-              <id>default-test</id>
-              <phase>none</phase>
-            </execution>
-          </executions>
-        </plugin>
-      </plugins>
-    </pluginManagement>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.2</version>
+        <executions>
+          <execution>
+            <id>default-test</id>
+            <phase>none</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 </project>
 
