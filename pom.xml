@@ -55,7 +55,8 @@
           </execution>
         </executions>
         <configuration>
-          <finalName>Hello</finalName>
+          <finalName>${JAR_NAME}</finalName>
+          <outputDirectory>${MAVEN_BUILD_OUTPUT_PATH}</outputDirectory>
             <!-- https://maven.apache.org/plugins/maven-assembly-plugin/faq.html#required-classifiers -->
           <appendAssemblyId>false</appendAssemblyId>
           <descriptorRefs>
